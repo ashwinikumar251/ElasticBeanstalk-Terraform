@@ -1,4 +1,4 @@
-# AWS ElasticBeanstalk With Your Custom Application
+# AWS ElasticBeanstalk With Terraform For Your Custom Application
 
 ## Prerequisites
 -AWS IAM Role with access to IAM, EC2, Beanstalk ,VPC & S3 
