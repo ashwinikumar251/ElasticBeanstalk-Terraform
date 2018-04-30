@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "mybucket" {
-  bucket = "ashwin-ireland"
+  bucket = "env-ash-${uuid()}"
 }
 
 resource "aws_s3_bucket_object" "myobject" {
@@ -15,8 +15,8 @@ resource "aws_elastic_beanstalk_application" "webapp" {
 }
 
 # The test environment
-resource "aws_elastic_beanstalk_environment" "testenv" {
-  name                  = "testenv"
+resource "aws_elastic_beanstalk_environment" "dtcc-env" {
+  name                  = "dtcc-env"
   application           = "${aws_elastic_beanstalk_application.webapp.name}"
   solution_stack_name   = "64bit Amazon Linux 2017.09 v2.6.6 running PHP 7.1"
   tier                  = "WebServer"

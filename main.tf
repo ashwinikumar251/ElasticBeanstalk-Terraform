@@ -1,7 +1,7 @@
 provider "aws" {
   access_key=""
   secret_key=""
-  region="eu-west-1"
+  #region="us-east-1"
   
 }
 
@@ -19,7 +19,7 @@ module "vpc" {
         public_subnets_cidr = "172.16.10.0/24,172.16.20.0/24"
         private_subnets_cidr = "172.16.30.0/24,172.16.40.0/24"
         azs    = "${data.aws_availability_zones.available.names[0]},${data.aws_availability_zones.available.names[1]}"
-}
+ }
 
 # Declare the eb module 
 module "eb" {
@@ -27,10 +27,8 @@ module "eb" {
   name="eb"
   environment = "dev"
   security_group_id="${module.eb_sg.eb_sg_id}" 
-  #availability_zones ="${data.aws_availability_zones.available.names[0]} , ${data.aws_availability_zones.available.names[1]}" 
   vpc_id ="${module.vpc.vpc_id}"
   subnets = "${module.vpc.public_subnets_id}"
-  #instance_id="${module.web_server.instance_id}" 
 }
 
 # Declare the elastic loadbalancer security group
